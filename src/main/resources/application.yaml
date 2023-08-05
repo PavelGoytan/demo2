@@ -1,0 +1,21 @@
+spring:
+  mail:
+    host: smtp.mail.ru
+    username: pavel.hoitan@mail.ru
+    password: "474WxhNSebnDWC1rm46g"
+#    host: mail.andersenlab.com
+    port: 587
+#    username: recruitment@andersenlab.com
+#    password: "Am8jLKZueW5tWnpr"
+    test-connection: true
+    send-mail: alexsandra.dragun@gmail.com
+    properties:
+      mail:
+        debug: true
+        smtp:
+          starttls:
+            enable: true
+          auth: true
+
+
+
