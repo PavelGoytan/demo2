@@ -3,29 +3,38 @@ package by.hoitan.demo2.controller;
 import by.hoitan.demo2.service.EmailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 
-@RestController
+import org.springframework.web.bind.annotation.PostMapping;
+
+import org.springframework.web.bind.annotation.RequestParam;
+
+
+@Controller
 @RequiredArgsConstructor
 public class HelloController {
 
-    @Autowired
     private EmailService emailService;
 
-    @RequestMapping("/hello")
-    public String hello() {
-        return "Hello Spring";
+    @Autowired
+    public HelloController(EmailService emailService) {
+        this.emailService = emailService;
+    }
+
+    @GetMapping("/hello")
+    public String hello(Model model) {
+        model.addAttribute("title", "send email");
+        return "hello";
     }
 
     @PostMapping(path = "/send-email")
-    public String sendEmail(@RequestParam(name = "to") String email) {
+    public String sendEmail(Model model, @RequestParam String titele, @RequestParam String theam) {
 
-        emailService.sendEmail(email);
+        emailService.sendEmail(titele, theam);
 
-        return "OK";
+        return "redirect:/hello";
     }
 
 }

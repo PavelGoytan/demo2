@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${title}"></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+</head>
+<body>
+<div th:insert="navbar"></div>
+<div class="container px-4" >
+    <form method="post" action="/send-email">
+        <div class="mb-3">
+            <label for="theam" class="form-label">Тема сообщения</label>
+            <input type="text" class="form-control" id="theam" name="theam" placeholder="name@example.com">
+        </div>
+        <div class="mb-3">
+            <label for="titele" class="form-label">Сообщение</label>
+            <textarea class="form-control" id="titele" name="titele" rows="3"></textarea>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>
+        </div>
+    </form>
+</div>
+
+<footer th:insert="footer"></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+</body>
+</html>
